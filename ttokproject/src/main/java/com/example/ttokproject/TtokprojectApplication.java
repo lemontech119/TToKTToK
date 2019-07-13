@@ -9,14 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TtokprojectApplication {
 
-    @GetMapping("/hello")
-    public String hello(){
-        return "default setting complete";
-    }
-
     @GetMapping("/test")
-    public String test() {
-        return "Devtool test";
+    public String hello() {
+        return "default setting complete";
     }
 
     public static void main(String[] args) {
