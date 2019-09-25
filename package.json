@@ -1,0 +1,19 @@
+{
+  "name": "ttokttok",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lemontech119/TToKTToK.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lemontech119/TToKTToK/issues"
+  },
+  "homepage": "https://github.com/lemontech119/TToKTToK#readme"
+}
