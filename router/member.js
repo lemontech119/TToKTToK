@@ -9,6 +9,19 @@ router.get("/", (req, res) => {
     res.render("test.ejs");
 })
 
+
+// 로그인 창
+router.get("/login", (req, res) =>{
+    res.render("member/login.ejs");
+})
+
+
+
+// 회원가입 창
+router.get("/join", (req, res) =>{
+    res.render("member/join.ejs");
+})
+
 router.get("/dbtest", (req, res) => {
     
     connection.query("select * from ttokttok.member", function(err, rows, fields){
