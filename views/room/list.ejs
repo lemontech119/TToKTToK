@@ -1,0 +1,27 @@
+<html lang="en">
+
+<head>
+    <% include ../inc/header.ejs %>
+</head>
+
+<body>
+    <% include ../inc/nav.ejs %>
+    <br>
+    <br>
+    <h1>회의실 리스트</h1>
+    <div class="row">
+
+        <% for(let i=0; i < lists.length; i++){ %>
+        <div class="card" style="width: 400px">
+            <img class="card-img-top" src="<%= lists[i].image %>" alt="Conference Image">
+            <div class="card-body">
+                <h4 class="card-title"> <%= lists[i].name_room %></h4>
+                <a href="/room/<%= lists[i].id %>"><button type="button" class="btn btn-success">회의실 예약하러 가기</button></a>
+            </div>
+        </div>
+        <% } %>
+
+    </div>
+</body>
+
+</html>
