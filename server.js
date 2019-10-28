@@ -7,6 +7,7 @@ const cookieparser = require('cookie-parser');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const port = 3000;
+const routes = require('./router')
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -24,15 +25,8 @@ app.use(session({
     store: new FileStore()
 }));
 
+app.use(routes)
 
-const member = require("./router/member");
-
-app.use("/member", member);
-
-
-app.get('/', (req, res) => {
-    res.render("index.ejs");
-})
 
 app.listen(port, () => {
     console.log('Server listening ...' + port);

@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <% include ../inc/header.ejs %>
+</head>
+<body>
+    <% include ../inc/nav.ejs %>
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
+                <div class="">
+                    <h2>Admin Login</h2>
+                    <form action="/admin/login" method="POST">
+                        <div class="form-group">
+                            <label for="id">ID:</label>
+                            <input type="text" class="form-control" id="id" placeholder="Enter ID" name="userid">
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" id="pwd" placeholder="Enter password"
+                                name="password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+</body>
+</html>
