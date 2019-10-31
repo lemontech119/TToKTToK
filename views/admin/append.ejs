@@ -10,7 +10,7 @@
                 <br>
                 <h2>Conference Append</h2>
                 <br>
-                <form action="/admin/append" method="POST">
+                <form action="/admin/append" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="conferenceName">Name</label>
                         <input type="text" class="from-control" id="conferenceName" 
@@ -25,6 +25,10 @@
                         <label for="intro">Intro</label>
                         <input type="text" class="from-control" id="intro" 
                             placeholder="회의실 간단한 설명을 작성해주세요" name="intro">
+                    </div>
+                    <div class="form-group">
+                        <label for="file">Image</label>
+                        <input type="file" name="file" id="file">
                     </div>
                     <button type="submit" class="btn btn-primary">작성</button>
                 </form>

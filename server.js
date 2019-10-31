@@ -17,6 +17,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(morgan('dev'));
 
+app.use(express.static('public'));
+
 app.use(cookieparser());
 app.use(session({
     secret: '1A@W#E$E',

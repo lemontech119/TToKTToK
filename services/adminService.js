@@ -33,10 +33,11 @@ const createConference = (req, res) =>{
     let name = req.body.name;
     let person = req.body.person;
     let intro = req.body.intro;
-    let image = "http://www.tippingkorea.co.kr/data/lecture/15349226341.jpg";
+    let image = req.file.path;
+    let imgPath = "http://localhost:3000\\" + image.substring(7);
     let sql = "insert into ttokttok.cenference (name_room, num_person, intro, image) values(?, ?, ?, ?)";
 
-    connection.query(sql, [name, person, intro, image], function(err, rows){
+    connection.query(sql, [name, person, intro, imgPath], function(err, rows){
         if(!err){
             console.log("성공")
             res.redirect("/admin/append")
