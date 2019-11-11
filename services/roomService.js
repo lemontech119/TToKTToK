@@ -40,7 +40,28 @@ const readRoom = (req, res) =>{
     })
 }
 
+const reservation = (req, res) =>{
+    let user = req.session.user;
+    let room = req.body.room;
+    let date = req.body.date;
+    let time = req.body.time;
+    let num = req.body.num;
+    let sql = "insert into ttokttok.reservation(idx_member, idx_room, date_reserve, time_reserve, num_reserver) values(?, ?, ?, ?, ?)";
+
+    connection.query(sql, [user, room, date, time, num], function(err, rows){
+        if(!err){
+            console.log("The solution is ", rows);
+            res.render("room/success.ejs");
+        }else{
+            console.log(err);
+            res.render("room/fail.ejs");
+        }
+    })
+
+}
+
 module.exports = {
     readRooms,
-    readRoom
+    readRoom,
+    reservation
 }

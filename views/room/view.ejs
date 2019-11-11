@@ -8,11 +8,53 @@
     <% include ../inc/nav.ejs %>
     <br>
     <br>
-    <h1><%= room[0].name_room %></h1>
+    
     <div class="container">
+        <h1><%= room[0].name_room %></h1>
         <div class="row">
+            <img src="<%=room[0].image%>" alt="">
+            <br>
             
-
+            <form action="/room/reservation" method="POST">
+                <div class="form-group">
+                    <div>
+                        <input type="text" name="room" value="<%= room[0].name_room %>" readonly>
+                    </div>
+                    <div>
+                        <label for="date">예약 일</label>
+                        <input type="date" id="date" name="date">        
+                    </div>
+                    <div>
+                        <label for="time">예약 시간</label>
+                        <select class="form-control" id="time" name="time">
+                            <option>09:00</option>
+                            <option>10:00</option>
+                            <option>11:00</option>
+                            <option>12:00</option>
+                            <option>13:00</option>
+                            <option>14:00</option>
+                            <option>15:00</option>
+                            <option>16:00</option>
+                            <option>17:00</option>
+                            <option>18:00</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="sel">인원 수</label>
+                        <select class="form-control" id="sel" name="num">
+                            <% for(let i=1; i<=room[0].num_person; i++){ %>
+                                <option><%= i %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">예약 신청</button>
+                </div>
+        
+            </form>
+        </div>
+        <div>
+                소개: <%=room[0].intro%> <br>      
+                사용 가능 인원: <%=room[0].num_person%><br>        
         </div>
     </div>
 
