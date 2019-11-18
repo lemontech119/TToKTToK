@@ -2,6 +2,22 @@ const mysql = require('mysql');
 const conn = require("../dbconnection.js");
 const connection = mysql.createConnection(conn);
 
+
+const myPage = (req, res)=>{
+    let user = req.session.user;
+    let sql ="select * from ttokttok.reservation where idx_member=?";
+    connection.query(sql, [user], function(err, rows){
+        if(!err){
+            console.log("The solution is ", rows);
+            res.render("member/mypage.ejs", {
+                mypage: rows
+            })
+        }else{
+            res.send("에러 발생")
+        }
+    })
+}
+
 const createMember = (req, res) => {
     let user_id = req.body.userid;
     let password = req.body.password;
@@ -11,7 +27,7 @@ const createMember = (req, res) => {
     connection.query(sql, [user_id, password, name], function(err, rows){
         if(!err){
             console.log("The solution is ", rows);
-            res.send("성공!");
+            res.redirect("/");
         }else{
             res.send("실패 ㅠㅠ");
         }
@@ -60,8 +76,8 @@ const loginMember = (req, res) =>{
 }
 
 module.exports = {
+    myPage,
     loginMember,
     createMember,
     logoutMember
-    
 }

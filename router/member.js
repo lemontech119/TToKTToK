@@ -13,6 +13,7 @@ router.get("/join", (req, res) =>{
     res.render("member/join.ejs");
 })
 
+router.get("/mypage", memberService.myPage);
 router.post("/login", memberService.loginMember);
 router.post("/join", memberService.createMember);
 router.get('/logout', memberService.logoutMember);

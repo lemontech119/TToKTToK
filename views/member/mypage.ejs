@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <% include ../inc/header.ejs %>
+</head>
+<body>
+    <% include ../inc/nav.ejs %>
+    <div class="container">
+        <h1>My Page</h1>
+        <br><br>
+        <div class="row">
+            <h3>예약 기록</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>회의실명</th>
+                        <th>예약인원</th>
+                        <th>예약날짜</th>
+                        <th>예약시간</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let i=0; i<mypage.length; i++){ %>
+                        <tr>
+                            <th><%= mypage[i].idx_member %></th>
+                            <th><%= mypage[i].num_reserver %></th>
+                            <th><%= mypage[i].date_reserve %></th>
+                            <th><%= mypage[i].time_reserve %></th>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
