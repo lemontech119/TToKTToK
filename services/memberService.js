@@ -10,7 +10,8 @@ const myPage = (req, res)=>{
         if(!err){
             console.log("The solution is ", rows);
             res.render("member/mypage.ejs", {
-                mypage: rows
+                mypage: rows,
+                result: "normal"
             })
         }else{
             res.send("에러 발생")

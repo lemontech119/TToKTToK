@@ -2,6 +2,22 @@ const mysql = require('mysql');
 const conn = require("../dbconnection.js");
 const connection = mysql.createConnection(conn);
 
+const deleteRoom = (req, res)=>{
+    let id = req.params.id;
+
+    let sql = "delete from ttokttok.reservation where id=?";
+    console.log("id", id)
+    connection.query(sql, id, function(err, rows){
+        if(!err){
+            console.log(rows);
+            res.redirect("/member/mypage");
+        }else{
+            console.log(err);
+            res.send("에러...")
+        }
+    })
+}
+
 const readRooms = (req, res) =>{
     let sql = "select * from ttokttok.cenference";
 
@@ -61,6 +77,7 @@ const reservation = (req, res) =>{
 }
 
 module.exports = {
+    deleteRoom,
     readRooms,
     readRoom,
     reservation

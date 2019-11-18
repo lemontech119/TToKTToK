@@ -1,6 +1,7 @@
 <html lang="en">
 <head>
     <% include ../inc/header.ejs %>
+    
 </head>
 <body>
     <% include ../inc/nav.ejs %>
@@ -8,7 +9,7 @@
         <h1>My Page</h1>
         <br><br>
         <div class="row">
-            <h3>예약 기록</h3>
+            <h3> <%= mypage[0].idx_member %>님의 예약 기록</h3>
             <table class="table">
                 <thead>
                     <tr>
@@ -16,6 +17,7 @@
                         <th>예약인원</th>
                         <th>예약날짜</th>
                         <th>예약시간</th>
+                        <th>예약취소</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,6 +27,7 @@
                             <th><%= mypage[i].num_reserver %></th>
                             <th><%= mypage[i].date_reserve %></th>
                             <th><%= mypage[i].time_reserve %></th>
+                            <th><a href="/room/cancel/<%= mypage[i].id%>"><button type="button" class="btn btn-danger">예약취소</button></a></th>
                         </tr>
                     <% } %>
                 </tbody>
