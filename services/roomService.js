@@ -63,7 +63,8 @@ const reservation = (req, res) =>{
     let time = req.body.time;
     let num = req.body.num;
     let sql = "insert into ttokttok.reservation(idx_member, idx_room, date_reserve, time_reserve, num_reserver) values(?, ?, ?, ?, ?)";
-
+    console.log(user);
+    
     connection.query(sql, [user, room, date, time, num], function(err, rows){
         if(!err){
             console.log("The solution is ", rows);
