@@ -10,7 +10,6 @@ const adminService = require("../services/adminService")
 const storage = multer.diskStorage({
     destination: function(req, file, cb){
         if(file.mimetype == "image/jpeg" || file.mimetype == "image/jpg" || file.mimetype == "image/png"){
-            console.log("이미지 파일 체크 완료");
             cb(null, "public/images")
         }else{
             res.send("이미지 파일만 가능합니다.")

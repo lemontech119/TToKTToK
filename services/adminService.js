@@ -3,22 +3,27 @@ const conn = require("../dbconnection.js");
 const connection = mysql.createConnection(conn);
 
 const loginAdmin = (req, res) => {
-    console.log("어드민 로그인 시도")
     let user_id = req.body.userid;
     let password = req.body.password;
     let sql = "select * from ttokttok.member where member_id=?";
     connection.query(sql, [user_id], function (err, rows) {
         if (!err) {
-            if (rows.length == 0) {
-                console.log("ID 잘못 적은 케이스");
-                res.render("admin/login.ejs");
+            if (rows.length === 0) {
+                res.json({
+                    result: "NoId"
+                })
                 return;
             } else if (password != rows[0].password) {
-                console.log("ID는 맞았지만 비밀번호가 다름");
-                res.render("admin/login.ejs");
+                res.json({
+                    result: "noPassword"
+                })
                 return;
             } else {
-                console.log("성공이당");
+                if(rows.role != "admin"){
+                    res.json({
+                        result: "noAdmin"
+                    })
+                }
                 req.session.user = user_id;
                 req.session.save(function () {
                     res.redirect("/admin/append.ejs");
@@ -39,11 +44,8 @@ const createConference = (req, res) =>{
 
     connection.query(sql, [name, person, intro, imgPath], function(err, rows){
         if(!err){
-            console.log("성공")
             res.redirect("/admin/append")
         }else{
-            console.log(err)
-            console.log("실패")
             res.send("실패")
         }
     })

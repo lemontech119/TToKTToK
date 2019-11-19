@@ -8,6 +8,9 @@ const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const port = 3000;
 const routes = require('./router')
+// const mysql = require('mysql');
+// const conn = require("dbconnection.js");
+// const connection = mysql.createConnection(conn);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -28,6 +31,16 @@ app.use(session({
 }));
 
 app.use(routes)
+
+// app.use(function(err, req, res, next){
+//     let sql = "delete from ttokttok.reservation where date_reserve < now()";
+//     connection.query(sql, function(err, rows){
+//         if(!err){
+//             console.log("예약시간이 지난 경우 제거")
+//         }
+//     })
+//     next();
+// })
 
 
 app.listen(port, () => {

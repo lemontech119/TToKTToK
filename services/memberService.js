@@ -8,7 +8,6 @@ const myPage = (req, res)=>{
     let sql ="select * from ttokttok.reservation where idx_member=?";
     connection.query(sql, [user], function(err, rows){
         if(!err){
-            console.log("The solution is ", rows);
             res.render("member/mypage.ejs", {
                 mypage: rows,
                 result: "normal"
@@ -36,12 +35,9 @@ const createMember = (req, res) => {
 }
 
 const logoutMember = (req, res) =>{
-    console.log('로그아웃시도1');
-    console.log(req.session.user);
     req.session.destroy(function () {
         req.session;
     });
-    console.log('로그아웃시도2');
     res.redirect('/');
 }
 
@@ -51,17 +47,13 @@ const loginMember = (req, res) =>{
     let sql = "select * from ttokttok.member where member_id = ?";
     connection.query(sql, [user_id], function(err, rows){
         if(!err){
-            console.log(rows);
             if(rows.length == 0){
-                console.log("ID 잘못 적은 케이스");
                 res.render("member/login.ejs");
                 return;
             }else if(password != rows[0].password){
-                console.log("ID는 맞았지만 비밀번호가 다름");
                 res.render("member/login.ejs");
                 return;
             }else{
-                console.log("성공이당");
                 req.session.user = user_id;
                 req.session.save(function(){
                     res.redirect("/");
@@ -70,7 +62,6 @@ const loginMember = (req, res) =>{
             }
             
         }else{
-            console.log(err);
             res.send(err);
         }
     })
